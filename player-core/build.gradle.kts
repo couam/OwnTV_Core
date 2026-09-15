@@ -19,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        minSdk = 26
+        minSdk = 23
         consumerProguardFiles("consumer-rules.pro")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -39,6 +39,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
 
     // Same as :core — release only, sources included.
@@ -91,6 +92,7 @@ dependencies {
     // hooks. The arrow points this way only: :core never sees :player-core.
     implementation(project(":core"))
 
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.coroutines.android)
 
